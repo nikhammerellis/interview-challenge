@@ -163,12 +163,10 @@ class ColorList extends Component {
       return (
         <li
           style={{
-            //textDecoration: number === currentPage ? "underline" : "none",
             listStyleType: "none",
             display: "inline-block",
             fontFamily: "Source Serif Pro, serif",
             borderBottom: number === currentPage ? "2px solid black" : "none",
-            //paddingBottom: "5px"
             width: "20px",
             textAlign: "center",
             fontWeight: number === currentPage ? "bold" : "normal"

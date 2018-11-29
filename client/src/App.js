@@ -10,13 +10,6 @@ import ColorDetail from "./components/ColorDetail";
 import "./App.css";
 
 class App extends Component {
-  // componendDidMount() {
-  //   window.scrollTo(0, 0);
-  // }
-  // componentDidUpdate() {
-  //   ReactDOM.findDOMNode(this).scrollTop = 0;
-  // }
-
   render() {
     return (
       <div className="container-fluid">
