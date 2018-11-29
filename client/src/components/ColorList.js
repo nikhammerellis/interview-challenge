@@ -113,14 +113,6 @@ class ColorList extends Component {
     colorsPerPage: 12
   };
 
-  // componendDidMount() {
-  //   window.scrollTo(0, 0);
-  // }
-
-  // componentDidUpdate() {
-  //   ReactDOM.findDOMNode(this).scrollTop = 0;
-  // }
-
   handlePagination = e => {
     this.setState({
       currentPage: Number(e.target.id)
@@ -151,7 +143,6 @@ class ColorList extends Component {
 
   renderPageNumbers = () => {
     const { colors, currentPage, colorsPerPage } = this.state;
-    console.log("CURRENT PAGE:", currentPage);
 
     const pageNumbers = [];
     for (let i = 1; i <= Math.ceil(colors.length / colorsPerPage); i++) {
@@ -159,7 +150,6 @@ class ColorList extends Component {
     }
 
     return pageNumbers.map(number => {
-      console.log("MAPPED NUMBER: ", number);
       return (
         <li
           style={{
@@ -182,7 +172,6 @@ class ColorList extends Component {
   };
 
   render() {
-    window.scrollTo(0, 0);
     return (
       <div className="col-sm-9" style={styles.gridContainer}>
         <div style={styles.colorsContainer}>

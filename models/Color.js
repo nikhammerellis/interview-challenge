@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const colorSchema = new Schema({
+const ColorSchema = new Schema({
   colorHex: String, //the hex code for the actual color
   colorCategory: String //Blue,Red,Green, etc
 });
 
-mongoose.model("colors", colorSchema);
+module.exports = mongoose.model("color", ColorSchema);
