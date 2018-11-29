@@ -1,37 +1,35 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import ReactDOM from "react-dom";
 
-import logo from "./logo.svg";
+import Header from "./components/Header";
+import Sidebar from "./components/Sidebar";
+import ColorList from "./components/ColorList";
+import ColorDetail from "./components/ColorDetail";
+
 import "./App.css";
 
-const Landing = () => {
-  return (
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <p>
-        Edit <code>src/App.js</code> and save to reload.
-      </p>
-      <a
-        className="App-link"
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Hi there
-      </a>
-    </header>
-  );
-};
-
 class App extends Component {
+  // componendDidMount() {
+  //   window.scrollTo(0, 0);
+  // }
+  // componentDidUpdate() {
+  //   ReactDOM.findDOMNode(this).scrollTop = 0;
+  // }
+
   render() {
     return (
-      <div className="container">
+      <div className="container-fluid">
         <BrowserRouter>
           <div>
-            <Switch>
-              <Route exact path="/" component={Landing} />
-            </Switch>
+            <Header />
+            <div className="row">
+              <Sidebar />
+              <Switch>
+                <Route exact path="/" component={ColorList} />
+                <Route exact path="/detail" component={ColorDetail} />
+              </Switch>
+            </div>
           </div>
         </BrowserRouter>
       </div>
@@ -40,18 +38,3 @@ class App extends Component {
 }
 
 export default App;
-//
-// <header className="App-header">
-//   <img src={logo} className="App-logo" alt="logo" />
-//   <p>
-//     Edit <code>src/App.js</code> and save to reload.
-//   </p>
-//   <a
-//     className="App-link"
-//     href="https://reactjs.org"
-//     target="_blank"
-//     rel="noopener noreferrer"
-//   >
-//     Hi there
-//   </a>
-// </header>
