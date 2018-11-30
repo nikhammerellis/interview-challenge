@@ -125,3 +125,19 @@
   margin-bottom: 10px;
   font-size: 20px;
 }
+
+@media (max-width: 575px) {
+  .random-color-button {
+    margin-top: 20px;
+  }
+  .color-category-item {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 800px) {
+  .random-color-button {
+    width: 150px;
+  }
+}
