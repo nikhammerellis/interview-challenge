@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "apollo-client": "^2.4.7",
+    "apollo-client": "^0.8.1",
     "axios": "^0.18.0",
     "graphql-tag": "^2.10.0",
     "http-proxy-middleware": "^0.19.1",

@@ -1,114 +1,9 @@
 import React, { Component } from "react";
 import { graphql } from "react-apollo";
-import gql from "graphql-tag";
-import ReactDOM from "react-dom";
-
-const colors = [
-  {
-    id: 1,
-    colorHex: "#0000ff",
-    colorCategory: "blue"
-  },
-  {
-    id: 2,
-    colorHex: "#ff0000",
-    colorCategory: "red"
-  },
-  {
-    id: 3,
-    colorHex: "#00ff00",
-    colorCategory: "green"
-  },
-  {
-    id: 4,
-    colorHex: "#ffcc00",
-    colorCategory: "orange"
-  },
-  {
-    id: 5,
-    colorHex: "#ffff00",
-    colorCategory: "yellow"
-  },
-  {
-    id: 6,
-    colorHex: "#0000ff",
-    colorCategory: "blue"
-  },
-  {
-    id: 7,
-    colorHex: "#ff0000",
-    colorCategory: "red"
-  },
-  {
-    id: 8,
-    colorHex: "#00ff00",
-    colorCategory: "green"
-  },
-  {
-    id: 9,
-    colorHex: "#ffcc00",
-    colorCategory: "orange"
-  },
-  {
-    id: 10,
-    colorHex: "#ffff00",
-    colorCategory: "yellow"
-  },
-  {
-    id: 11,
-    colorHex: "#0000ff",
-    colorCategory: "blue"
-  },
-  {
-    id: 12,
-    colorHex: "#ff0000",
-    colorCategory: "red"
-  },
-  {
-    id: 13,
-    colorHex: "#00ff00",
-    colorCategory: "green"
-  },
-  {
-    id: 14,
-    colorHex: "#ffcc00",
-    colorCategory: "orange"
-  },
-  {
-    id: 15,
-    colorHex: "#ffff00",
-    colorCategory: "yellow"
-  },
-  {
-    id: 16,
-    colorHex: "#0000ff",
-    colorCategory: "blue"
-  },
-  {
-    id: 17,
-    colorHex: "#ff0000",
-    colorCategory: "red"
-  },
-  {
-    id: 18,
-    colorHex: "#00ff00",
-    colorCategory: "green"
-  },
-  {
-    id: 19,
-    colorHex: "#ffcc00",
-    colorCategory: "orange"
-  },
-  {
-    id: 20,
-    colorHex: "#ffff00",
-    colorCategory: "yellow"
-  }
-];
+import fetchColors from "../queries/fetchColors";
 
 class ColorList extends Component {
   state = {
-    colors: colors,
     currentPage: 1,
     colorsPerPage: 12
   };
@@ -121,7 +16,8 @@ class ColorList extends Component {
   };
 
   renderColors = () => {
-    const { colors, currentPage, colorsPerPage } = this.state;
+    const { currentPage, colorsPerPage } = this.state;
+    const { colors } = this.props.data;
 
     //logic for displaying colors
     const indexOfLastColor = currentPage * colorsPerPage;
@@ -142,7 +38,8 @@ class ColorList extends Component {
   };
 
   renderPageNumbers = () => {
-    const { colors, currentPage, colorsPerPage } = this.state;
+    const { currentPage, colorsPerPage } = this.state;
+    const { colors } = this.props.data;
 
     const pageNumbers = [];
     for (let i = 1; i <= Math.ceil(colors.length / colorsPerPage); i++) {
@@ -172,6 +69,15 @@ class ColorList extends Component {
   };
 
   render() {
+    if (!this.props.data.colors) {
+      return (
+        <div className="col-sm-9" style={styles.gridContainer}>
+          <h1>Loading...</h1>
+        </div>
+      );
+    }
+
+    console.log(this.props);
     return (
       <div className="col-sm-9" style={styles.gridContainer}>
         <div style={styles.colorsContainer}>
@@ -200,4 +106,4 @@ const styles = {
   }
 };
 
-export default ColorList;
+export default graphql(fetchColors)(ColorList);

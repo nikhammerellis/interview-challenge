@@ -1,6 +1,10 @@
 const express = require("express");
+const cors = require("cors");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const expressGraphQL = require("express-graphql");
+//const { buildAST}
+const schema = require("./schema/schema");
 
 const keys = require("./config/keys");
 require("./models/Color");
@@ -16,8 +20,17 @@ mongoose.connection
 
 //initialize app
 const app = express();
+app.use(cors());
 
 app.use(bodyParser.json());
+
+app.use(
+  "/graphql",
+  expressGraphQL({
+    schema,
+    graphiql: true
+  })
+);
 
 require("./routes/colorRoutes")(app);
 
