@@ -3,7 +3,7 @@ const graphql = require("graphql");
 const { GraphQLObjectType, GraphQLList, GraphQLID, GraphQLNonNull } = graphql;
 
 const ColorType = require("./color_type");
-const Color = mongoose.model("color"); //may turn into a require statement if it gives me trouble
+const Color = mongoose.model("color");
 
 const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",

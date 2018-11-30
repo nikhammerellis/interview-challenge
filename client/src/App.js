@@ -14,7 +14,7 @@ import "./App.css";
 const client = new ApolloClient({
   //this takes every piece of data fetched from the back end with ApolloClient
   //and runs it through this function (prevents refetch queries, minimizing API calls)
-  dataIdFromObject: o => o.id
+  //dataIdFromObject: o => o.id
 });
 
 class App extends Component {
@@ -29,7 +29,7 @@ class App extends Component {
                 <Sidebar />
                 <Switch>
                   <Route exact path="/" component={ColorList} />
-                  <Route exact path="/detail" component={ColorDetail} />
+                  <Route exact path="/:id" component={ColorDetail} />
                 </Switch>
               </div>
             </div>

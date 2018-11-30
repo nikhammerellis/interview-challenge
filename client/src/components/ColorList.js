@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { graphql } from "react-apollo";
+import { Link } from "react-router-dom";
 import fetchColors from "../queries/fetchColors";
 
 class ColorList extends Component {
@@ -26,13 +27,15 @@ class ColorList extends Component {
 
     return currentColors.map((color, i) => {
       return (
-        <li className="color-swatch" key={color.id}>
-          <div
-            className="color-box"
-            style={{ backgroundColor: color.colorHex }}
-          />
-          <div className="color-hex">{color.colorHex}</div>
-        </li>
+        <Link to={`/${color.id}`} key={color.id}>
+          <li className="color-swatch">
+            <div
+              className="color-box"
+              style={{ backgroundColor: color.colorHex }}
+            />
+            <div className="color-hex">{color.colorHex}</div>
+          </li>
+        </Link>
       );
     });
   };
@@ -56,7 +59,8 @@ class ColorList extends Component {
             borderBottom: number === currentPage ? "2px solid black" : "none",
             width: "20px",
             textAlign: "center",
-            fontWeight: number === currentPage ? "bold" : "normal"
+            fontWeight: number === currentPage ? "bold" : "normal",
+            cursor: "pointer"
           }}
           key={number}
           id={number}
@@ -77,7 +81,6 @@ class ColorList extends Component {
       );
     }
 
-    console.log(this.props);
     return (
       <div className="col-sm-9" style={styles.gridContainer}>
         <div style={styles.colorsContainer}>

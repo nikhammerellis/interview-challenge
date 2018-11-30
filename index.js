@@ -32,8 +32,6 @@ app.use(
   })
 );
 
-require("./routes/colorRoutes")(app);
-
 //run this code in production, connects React App to Express.
 if (process.env.NODE_ENV === "production") {
   //express will serve up production assets

@@ -6,10 +6,13 @@ mongoose.connect(
   keys.mongoURI,
   { useNewUrlParser: true }
 );
+
+//make sure the connection worked
 mongoose.connection
   .once("open", () => console.log("Connected to MongoLab instance."))
   .on("error", error => console.log("Error connecting to MongoLab:", error));
 
+//colorCategory is for sidebar functionality
 let colors = [
   {
     colorHex: "#0000ff",
@@ -433,8 +436,12 @@ function shuffle(array) {
   return array;
 }
 
-colors = shuffle(colors); //shuffle the colors array before seeding mongodb with it
+//shuffle the colors array before seeding mongodb with it
+//if a particular order is wanted, remove this line and order manually
+//was easier to get 100 colors by doing similar ones at the same time so shuffling seemed necessary
+colors = shuffle(colors);
 
+//have to do a dance to prevent process.exit from firing before each save finishes
 let count = 1;
 for (i = 0; i < colors.length; i++) {
   const newColor = new Color(colors[i]);

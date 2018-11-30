@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-// import { graphql } from "react-apollo";
-// import gql from "graphql-tag";
+import { Link } from "react-router-dom";
 
 import Logo from "../assets/logo.svg";
 
@@ -11,9 +10,10 @@ class Header extends Component {
         className="navbar navbar-expand-lg navbar-dark bg-dark"
         style={{ marginLeft: "-15px", marginRight: "-15px" }}
       >
-        <a className="navbar-brand" href="#">
+        <Link className="navbar-brand" to="/">
           <img src={Logo} alt="logo" />
-        </a>
+        </Link>
+        <input placeholder="Search" className="search-input" />
         <button
           className="navbar-toggler"
           type="button"
